@@ -20,13 +20,13 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
-    projects: 'PlanningCenter.NetCore.sln'
+    projects: 'Vision2.Api.NetCore.sln'
     arguments: '--configuration Release'
 
 - task: DotNetCoreCLI@2
   inputs:
     command: 'pack'
-    packagesToPack: 'src/lib/PlanningCenter/PlanningCenter.csproj'
+    packagesToPack: 'src/lib/Vision2.Api/Vision2.Api.csproj'
     versioningScheme: 'byBuildNumber'
 
 - task: NuGetCommand@2
