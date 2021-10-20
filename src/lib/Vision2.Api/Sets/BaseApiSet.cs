@@ -67,6 +67,13 @@ namespace Vision2 {
             }
         }
 
+        internal async Task<IVision2RestResponse<Vision2Response<List<S>>>> FindResultsAsync<S>(string url, [CallerMemberName] string memberName = "", [CallerFilePath] string fileName = "", [CallerLineNumber] int lineNumber = 0) where S : new() {
+            using (var http = CreateClient()) {
+                var response = await http.GetAsync(url);
+                return await ConvertResponseAsync<Vision2Response<List<S>>>(response, url, string.Empty, memberName, fileName, lineNumber);
+            }
+        }
+
         internal async Task<IVision2RestResponse<List<S>>> FindAsync<S>(string url, BaseQO qo, [CallerMemberName] string memberName = "", [CallerFilePath] string fileName = "", [CallerLineNumber] int lineNumber = 0) where S : new() {
             using (var http = CreateClient()) {
                 var response = await http.GetAsync(BuildURLParametersString(url, qo));
@@ -88,7 +95,6 @@ namespace Vision2 {
                 return vision2Response;
             }
         }
-
 
         internal async Task<IVision2RestResponse<Vision2Response<T>>> PostAsync(T entity, string url, [CallerMemberName] string memberName = "", [CallerFilePath] string fileName = "", [CallerLineNumber] int lineNumber = 0) {
             using (var http = CreateClient()) {
@@ -227,7 +233,6 @@ namespace Vision2 {
         private string BuildURLParametersString(string uri, BaseQO qo) {
             return $"{ uri}?{qo.ToQueryString()}";
         }
-
 
         private int? GetHeaderValue(string value, HttpResponseMessage response) {
             if (!response.Headers.Contains(value)) {

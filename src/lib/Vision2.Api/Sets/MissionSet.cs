@@ -7,7 +7,6 @@ using Vision2.QueryObject;
 namespace Vision2.Sets {
     public class MissionSet : BaseSet<Mission> {
         public MissionSet(Vision2Token token, string apiUrl, Action<IVision2RestResponse> loggingAction) : base(token, apiUrl, loggingAction) {
-
         }
 
         public async Task<IVision2RestResponse<Vision2Response<Mission>>> CreateAsync(Mission entity) {
@@ -26,8 +25,8 @@ namespace Vision2.Sets {
             return await SearchAsync<SearchMission>("/search/missiontrip", qo);
         }
 
-        public async Task<IVision2RestResponse<List<VolunteerOpportunity>>> FindVolunteerOpportunitiesAsync(int fundableId) {
-            return await FindAsync<VolunteerOpportunity>("/volunteeropportunity/getbydesignationid/" + fundableId);
+        public async Task<IVision2RestResponse<Vision2Response<List<VolunteerOpportunity>>>> FindVolunteerOpportunitiesAsync(int fundableId) {
+            return await FindResultsAsync<VolunteerOpportunity>("/volunteeropportunity/getbydesignationid/" + fundableId);
         }
     }
 }
