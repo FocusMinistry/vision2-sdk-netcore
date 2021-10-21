@@ -68,7 +68,8 @@ namespace Vision2 {
 
                 var v2Response = new Vision2RestResponse<Vision2Token> {
                     StatusCode = response.StatusCode,
-                    RequestValue = Newtonsoft.Json.JsonConvert.SerializeObject(content)
+                    RequestValue = Newtonsoft.Json.JsonConvert.SerializeObject(content),
+                    JsonResponse = responseContent,
                 };
 
                 if (!string.IsNullOrEmpty(responseContent) && responseContent.Contains("error")) {
