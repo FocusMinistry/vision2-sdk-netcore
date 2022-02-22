@@ -21,7 +21,7 @@ namespace Vision2.Model {
         public string VolunteerCampaignName { get; set; }
         public string BasketCategory { get; set; }
         public string Tags { get; set; }
-        public int? SortKey { get; set; }
+        public string SortKey { get; set; }
         public bool IsFundraiserContentApprovalRequired { get; set; }
         public bool IsShowOnlineIfGoalMet { get; set; }
         public string Name { get; set; }
