@@ -21,7 +21,7 @@ namespace Vision2.Model {
         public string VolunteerCampaignName { get; set; }
         public string BasketCategory { get; set; }
         public string Tags { get; set; }
-        public int SortKey { get; set; }
+        public int? SortKey { get; set; }
         public bool IsFundraiserContentApprovalRequired { get; set; }
         public bool IsShowOnlineIfGoalMet { get; set; }
         public string Name { get; set; }
@@ -45,7 +45,7 @@ namespace Vision2.Model {
         public string DefaultGivingLinkName { get; set; }
         public int DefaultConnectLinkId { get; set; }
         public string DefaultConnectLinkName { get; set; }
-        public int DefaultCommitmentLinkId { get; set; }
+        public int? DefaultCommitmentLinkId { get; set; }
         public string DefaultCommitmentLinkName { get; set; }
         public bool EnableFirstGiftNotifications { get; set; }
         public bool EnableLastGiftNotifications { get; set; }
@@ -61,5 +61,6 @@ namespace Vision2.Model {
         public bool IsTithe { get; set; }
         public int NonCharitableOrganizationFundId { get; set; }
         public bool IsCharitable { get; set; }
+        public bool IsDefaultForType { get; set; }
     }
 }
