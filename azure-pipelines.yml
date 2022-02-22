@@ -26,7 +26,7 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'pack'
-    packagesToPack: 'src/lib/Vision2.Api/Vision2.Api.csproj'
+    packagesToPack: 'src/lib/Vision2/Vision2.csproj'
     versioningScheme: 'byBuildNumber'
 
 - task: NuGetCommand@2
