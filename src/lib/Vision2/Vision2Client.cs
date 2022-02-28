@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Vision2.Extensions;
 using Vision2.Model;
 using Vision2.Sets;
+using System.Net.Http.Headers;
 
 namespace Vision2 {
     public class Vision2Client {
@@ -55,7 +56,7 @@ namespace Vision2 {
         /// <returns>An OAuth Token object to use for subsequent requests</returns>
         public static async Task<IVision2RestResponse<Vision2Token>> RequestAccessTokenAsync(Vision2Options options) {
             System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12 | System.Net.SecurityProtocolType.Tls11;
-            using (var httpClient = new HttpClient()) {
+            using (var httpClient = CreateClient()) {
                 var content = new FormUrlEncodedContent(new[]
                 {
                     new KeyValuePair<string, string>("grant_type", "password"),
@@ -90,7 +91,7 @@ namespace Vision2 {
 
         public static async Task<IVision2RestResponse<Vision2Token>> RefreshAccessTokenAsync(Vision2Options options, string refreshToken) {
             System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12 | System.Net.SecurityProtocolType.Tls11;
-            using (var httpClient = new HttpClient()) {
+            using (var httpClient = CreateClient()) {
                 try {
                     var content = new FormUrlEncodedContent(new[]
                     {
@@ -120,6 +121,14 @@ namespace Vision2 {
                     return null;
                 }
             }
+        }
+
+        private static HttpClient CreateClient() {
+            var httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Accept.Clear();
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            httpClient.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json; charset=utf-8");
+            return httpClient;
         }
     }
 
