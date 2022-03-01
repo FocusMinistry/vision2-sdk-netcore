@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Vision2.Model {
     public class Vision2ResponseData {
         public string ErrorMessage { get; set; }
 
-        public string ValidationMessages { get; set; }
+        public List<string> ValidationMessages { get; set; }
 
         public int Status { get; set; }
 

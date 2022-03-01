@@ -201,16 +201,13 @@ namespace Vision2 {
             };
 
             try {
+                vision2Response.Data = JsonConvert.DeserializeObject<S>(vision2Response.JsonResponse);
+            }
+            catch (Exception ex) {
                 if (!string.IsNullOrEmpty(vision2Response.JsonResponse) && (int)response.StatusCode > 300) {
                     var responseError = JsonConvert.DeserializeObject<dynamic>(vision2Response.JsonResponse);
                     vision2Response.ErrorMessage = responseError.error_message;
                 }
-                else {
-                    vision2Response.Data = JsonConvert.DeserializeObject<S>(vision2Response.JsonResponse);
-                }
-            }
-            catch (Exception e) {
-                var t = e.Message;
             }
 
             _loggingAction?.Invoke(vision2Response);
