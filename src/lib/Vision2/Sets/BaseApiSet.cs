@@ -200,12 +200,17 @@ namespace Vision2 {
                 CallerMemberName = memberName,
             };
 
-            if (!string.IsNullOrEmpty(vision2Response.JsonResponse) && (int)response.StatusCode > 300) {
-                var responseError = JsonConvert.DeserializeObject<dynamic>(vision2Response.JsonResponse);
-                vision2Response.ErrorMessage = responseError.error_message;
+            try {
+                if (!string.IsNullOrEmpty(vision2Response.JsonResponse) && (int)response.StatusCode > 300) {
+                    var responseError = JsonConvert.DeserializeObject<dynamic>(vision2Response.JsonResponse);
+                    vision2Response.ErrorMessage = responseError.error_message;
+                }
+                else {
+                    vision2Response.Data = JsonConvert.DeserializeObject<S>(vision2Response.JsonResponse);
+                }
             }
-            else {
-                vision2Response.Data = JsonConvert.DeserializeObject<S>(vision2Response.JsonResponse);
+            catch (Exception e) {
+                var t = e.Message;
             }
 
             _loggingAction?.Invoke(vision2Response);

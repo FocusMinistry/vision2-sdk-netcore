@@ -32,6 +32,7 @@ namespace Vision2.Model {
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public int OrganizationFundId { get; set; }
+        public string PartneredOrganizations { get; set; }
         public int WebPhotoId { get; set; }
         public int MobilePhotoId { get; set; }
         public int CarouselPhotoId { get; set; }
@@ -54,7 +55,7 @@ namespace Vision2.Model {
         public int ScheduledCommitmentPaymentTriggerId { get; set; }
         public int FirstGiftTriggerId { get; set; }
         public int LastGiftTriggerId { get; set; }
-        public int DepartmentId { get; set; }
+        public int? DepartmentId { get; set; }
         public decimal GoalAmount { get; set; }
         public bool IncludePledgesInGoalProgress { get; set; }
         public bool IsArchived { get; set; }
