@@ -21,5 +21,8 @@ namespace Vision2.QueryObject {
 
         [QO("FundableId")]
         public int? FundableId { get; set; }
+
+        [QO("IndividualProfileId")]
+        public int? IndividualProfileId { get; set; }
     }
 }
