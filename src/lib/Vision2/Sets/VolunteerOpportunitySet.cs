@@ -10,8 +10,8 @@ namespace Vision2.Sets {
 
         }
 
-        public async Task<IVision2RestResponse<Vision2Response<List<VolunteerOpportunity>>>> FindAllAsync() {
-            return await FindResultsAsync<VolunteerOpportunity>("/volunteeropportunity/");
+        public async Task<IVision2RestResponse<List<VolunteerOpportunity>>> FindAllAsync() {
+            return await FindAsync<VolunteerOpportunity>("/volunteeropportunity/");
         }
 
         public async Task<IVision2RestResponse<Vision2PagedResponse<VolunteerOpportunity>>> FindAsync(VolunteerOpportunityQO qo) {

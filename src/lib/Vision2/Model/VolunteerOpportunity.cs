@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Vision2.Model {
+﻿namespace Vision2.Model {
     public class VolunteerOpportunity {
         public int Id { get; set; }
 
@@ -32,6 +26,6 @@ namespace Vision2.Model {
 
         public bool IsGoalOpportunitySpecific { get; set; }
 
-        public decimal OpportunityGoal { get; set; }
+        public decimal? OpportunityGoal { get; set; }
     }
 }
